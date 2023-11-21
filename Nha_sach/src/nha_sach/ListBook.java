@@ -6,15 +6,17 @@ package nha_sach;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
 public class ListBook {
+
     ArrayList<Book> list = new ArrayList<>(); // list gồm danh sách các cuốn sách
     // Chức năng của khách + admin
 
     public void PrintBook(Book x) { // in các cuốn sách
-        System.out.println(x.Title + "    " + x.Author + "    " + x.Category + "    " + x.Date + "    ");
+        System.out.println(x.getTitle() + "    " + x.getAuthor() + "    " + x.getCategory() + "    " + x.getDate() + "    ");
         System.out.println("--------|-----------|-----------|-------");
     }
-    
+
     public void PrintList() { // in danh sách các cuốn sách
         if (list.isEmpty()) {
             System.out.println("Empty List!");
@@ -26,8 +28,9 @@ public class ListBook {
             }
         }
     }
-    
-    public void FindBook() { // tìm sách
+
+    public void FindBook() {
+        Scanner sc = new Scanner(System.in);// tìm sách
         System.out.println("How do you want to find books?");
         System.out.println("1.Title");
         System.out.println("2.Author");
@@ -35,7 +38,6 @@ public class ListBook {
         System.out.println("4.Date");
         System.out.println("Please chose the number you want.");
         // xử lí
-        Scanner sc = new Scanner(System.in);
         int number = Integer.parseInt(sc.nextLine());
         int check = 0;
         switch (number) {
@@ -43,7 +45,7 @@ public class ListBook {
                 System.out.print("Please enter a title: ");
                 String tieude = sc.nextLine();
                 for (Book x : list) {
-                    if (x.Title.equals(tieude)) {
+                    if (x.getTitle().equals(tieude)) {
                         check = 1;
                     }
                 }
@@ -53,19 +55,18 @@ public class ListBook {
                     System.out.println("Title   | Author    | Category  | Date  ");
                     System.out.println("--------|-----------|-----------|-------");
                     for (Book x : list) {
-                        if (x.Title.equals(tieude)) {
+                        if (x.getTitle().equals(tieude)) {
                             PrintBook(x);
                         }
                     }
                 }
-                break;
             }
             case 2 -> {
                 System.out.print("Please enter a author: ");
                 String tacgia = sc.nextLine();
                 for (Book x : list) {
-                    if (x.Author.equals(tacgia)) {
-                        
+                    if (x.getAuthor().equals(tacgia)) {
+
                         check = 1;
                     }
                 }
@@ -75,18 +76,17 @@ public class ListBook {
                     System.out.println("Title   | Author    | Category  | Date  ");
                     System.out.println("--------|-----------|-----------|-------");
                     for (Book x : list) {
-                        if (x.Author.equals(tacgia)  {
+                        if (x.getAuthor().equals(tacgia)) {
                             PrintBook(x);
                         }
                     }
                 }
-                break;
             }
             case 3 -> {
                 System.out.print("Please enter a category: ");
                 String theloai = sc.nextLine();
                 for (Book x : list) {
-                    if (x.Category.equals(theloai)) {
+                    if (x.getCategory().equals(theloai)) {
                         check = 1;
                     }
                 }
@@ -96,18 +96,17 @@ public class ListBook {
                     System.out.println("Title   | Author    | Category  | Date  ");
                     System.out.println("--------|-----------|-----------|-------");
                     for (Book x : list) {
-                        if (x.Category.equals(theloai)) {
+                        if (x.getCategory().equals(theloai)) {
                             PrintBook(x);
                         }
                     }
                 }
-                break;
             }
             case 4 -> {
                 System.out.print("Please enter a date: ");
                 String ngayxuatban = sc.nextLine();
                 for (Book x : list) {
-                    if (x.Date.equals(ngayxuatban)) {
+                    if (x.getDate().equals(ngayxuatban)) {
                         check = 1;
                     }
                 }
@@ -117,35 +116,41 @@ public class ListBook {
                     System.out.println("Title   | Author    | Category  | Date  ");
                     System.out.println("--------|-----------|-----------|-------");
                     for (Book x : list) {
-                        if (x.Date.equals(ngayxuatban)) {
+                        if (x.getDate().equals(ngayxuatban)) {
                             PrintBook(x);
                         }
                     }
                 }
-                break;
             }
-            
+
             default ->
                 throw new AssertionError();
         }
+        sc.close();
     }
 
     // chức năng của admin
-    public void AddBook() { // thêm sách
+    public void AddBook() {
+        Scanner sc = new Scanner(System.in);// thêm sách
         Book book = new Book();
-        Scanner sc = new Scanner(System.in);
         System.out.print("Title: ");
-        book.Title = sc.nextLine();
+        String Title = sc.nextLine();
+        book.setTitle(Title);
         System.out.print("Author: ");
-        book.Author = sc.nextLine();
+        String Author = sc.nextLine();
+        book.setAuthor(Author);
         System.out.print("Category: ");
-        book.Category = sc.nextLine();
+        String Category = sc.nextLine();
+        book.setCategory(Category);
         System.out.print("Date: ");
-        book.Date = sc.nextLine();
+        String Date = sc.nextLine();
+        book.setDate(Date);
         list.add(book);
+        sc.close();
     }
-    
-    public void DeleteBook() { // xóa sách
+
+    public void DeleteBook() {
+        Scanner sc = new Scanner(System.in);// xóa sách
         System.out.println("How do you want to delete books?");
         System.out.println("1.Title");
         System.out.println("2.Author");
@@ -153,7 +158,6 @@ public class ListBook {
         System.out.println("4.Date");
         System.out.println("Please chose the number you want.");
         // xử lí
-        Scanner sc = new Scanner(System.in);
         int number = Integer.parseInt(sc.nextLine());
         int check = 0;
         switch (number) {
@@ -161,61 +165,62 @@ public class ListBook {
                 System.out.print("Please enter a title: ");
                 String tieude = sc.nextLine();
                 for (Book x : list) {
-                    if (x.Title.equals(tieude)) {
+                    if (x.getTitle().equals(tieude)) {
                         list.remove(x);
+                        System.out.println("Deleted Successfully!");
                         check = 1;
                     }
                 }
                 if (check == 0) {
                     System.out.println("There is no other book with a title like this!");
                 }
-                break;
             }
             case 2 -> {
                 System.out.print("Please enter a author: ");
                 String tacgia = sc.nextLine();
                 for (Book x : list) {
-                    if (x.Author.equals(tacgia)) {
+                    if (x.getAuthor().equals(tacgia)) {
                         list.remove(x);
+                        System.out.println("Deleted Successfully!");
                         check = 1;
                     }
                 }
                 if (check == 0) {
                     System.out.println("There is no other book with a author like this!");
                 }
-                break;
             }
             case 3 -> {
                 System.out.print("Please enter a category: ");
                 String theloai = sc.nextLine();
                 for (Book x : list) {
-                    if (x.Category.equals(theloai)) {
+                    if (x.getCategory().equals(theloai)) {
                         list.remove(x);
+                        System.out.println("Deleted Successfully!");
                         check = 1;
                     }
                 }
                 if (check == 0) {
                     System.out.println("There is no other book with a category like this!");
                 }
-                break;
             }
             case 4 -> {
                 System.out.print("Please enter a date: ");
                 String ngayxuatban = sc.nextLine();
                 for (Book x : list) {
-                    if (x.Date.equals(ngayxuatban)) {
+                    if (x.getDate().equals(ngayxuatban)) {
                         list.remove(x);
+                        System.out.println("Deleted Successfully!");
                         check = 1;
                     }
                 }
                 if (check == 0) {
                     System.out.println("There is no other book with a date like this!");
                 }
-                break;
             }
             default ->
                 throw new AssertionError();
         }
+        sc.close();
     }
 
     // sửa sách
@@ -235,7 +240,7 @@ public class ListBook {
                 System.out.print("Please enter a title: ");
                 String tieude = sc.nextLine();
                 for (Book x : list) {
-                    if (x.Title.equals(tieude)) {
+                    if (x.getTitle().equals(tieude)) {
                         check = 1;
                         break;
                     }
@@ -245,25 +250,28 @@ public class ListBook {
                 } else {
                     System.out.println("Please re-enter the book's information!");
                     for (Book x : list) {
-                        if (x.Title.equals(tieude)) {
+                        if (x.getTitle().equals(tieude)) {
                             System.out.print("Title: ");
-                            x.Title = sc.nextLine();
+                            String Title = sc.nextLine();
+                            x.setTitle(Title);
                             System.out.print("Author: ");
-                            x.Author = sc.nextLine();
+                            String Author = sc.nextLine();
+                            x.setAuthor(Author);
                             System.out.print("Category: ");
-                            x.Category = sc.nextLine();
+                            String Category = sc.nextLine();
+                            x.setCategory(Category);
                             System.out.print("Date: ");
-                            x.Date = sc.nextLine();
+                            String Date = sc.nextLine();
+                            x.setDate(Date);
                         }
                     }
                 }
-                break;
             }
             case 2 -> {
                 System.out.print("Please enter a author: ");
                 String tacgia = sc.nextLine();
                 for (Book x : list) {
-                    if (x.Author.equals(tacgia)) {
+                    if (x.getAuthor().equals(tacgia)) {
                         check = 1;
                         break;
                     }
@@ -273,25 +281,28 @@ public class ListBook {
                 } else {
                     System.out.println("Please re-enter the book's information!");
                     for (Book x : list) {
-                        if (x.Author.equals(tacgia)) {
+                        if (x.getAuthor().equals(tacgia)) {
                             System.out.print("Title: ");
-                            x.Title = sc.nextLine();
+                            String Title = sc.nextLine();
+                            x.setTitle(Title);
                             System.out.print("Author: ");
-                            x.Author = sc.nextLine();
+                            String Author = sc.nextLine();
+                            x.setAuthor(Author);
                             System.out.print("Category: ");
-                            x.Category = sc.nextLine();
+                            String Category = sc.nextLine();
+                            x.setCategory(Category);
                             System.out.print("Date: ");
-                            x.Date = sc.nextLine();
+                            String Date = sc.nextLine();
+                            x.setDate(Date);
                         }
                     }
                 }
-                break;
             }
             case 3 -> {
                 System.out.print("Please enter a category: ");
                 String theloai = sc.nextLine();
                 for (Book x : list) {
-                    if (x.Category.equals(theloai)) {
+                    if (x.getCategory().equals(theloai)) {
                         check = 1;
                         break;
                     }
@@ -301,25 +312,28 @@ public class ListBook {
                 } else {
                     System.out.println("Please re-enter the book's information!");
                     for (Book x : list) {
-                        if (x.Category.equals(theloai)) {
+                        if (x.getCategory().equals(theloai)) {
                             System.out.print("Title: ");
-                            x.Title = sc.nextLine();
+                            String Title = sc.nextLine();
+                            x.setTitle(Title);
                             System.out.print("Author: ");
-                            x.Author = sc.nextLine();
+                            String Author = sc.nextLine();
+                            x.setAuthor(Author);
                             System.out.print("Category: ");
-                            x.Category = sc.nextLine();
+                            String Category = sc.nextLine();
+                            x.setCategory(Category);
                             System.out.print("Date: ");
-                            x.Date = sc.nextLine();
+                            String Date = sc.nextLine();
+                            x.setDate(Date);
                         }
                     }
                 }
-                break;
             }
             case 4 -> {
                 System.out.print("Please enter a date: ");
                 String ngayxuatban = sc.nextLine();
                 for (Book x : list) {
-                    if (x.Date.equals(ngayxuatban)) {
+                    if (x.getDate().equals(ngayxuatban)) {
                         check = 1;
                         break;
                     }
@@ -329,22 +343,26 @@ public class ListBook {
                 } else {
                     System.out.println("Please re-enter the book's information!");
                     for (Book x : list) {
-                        if (x.Date.equals(ngayxuatban)) {
+                        if (x.getDate().equals(ngayxuatban)) {
                             System.out.print("Title: ");
-                            x.Title = sc.nextLine();
+                            String Title = sc.nextLine();
+                            x.setTitle(Title);
                             System.out.print("Author: ");
-                            x.Author = sc.nextLine();
+                            String Author = sc.nextLine();
+                            x.setAuthor(Author);
                             System.out.print("Category: ");
-                            x.Category = sc.nextLine();
+                            String Category = sc.nextLine();
+                            x.setCategory(Category);
                             System.out.print("Date: ");
-                            x.Date = sc.nextLine();
+                            String Date = sc.nextLine();
+                            x.setDate(Date);
                         }
                     }
                 }
-                break;
             }
             default ->
                 throw new AssertionError();
         }
+        sc.close();
     }
 }

@@ -5,11 +5,6 @@
 package nha_sach;
 
 import java.util.Scanner;
-
-/**
- *
- * @author phant
- */
 public class Process {
     ListBook list = new ListBook();
     

@@ -5,11 +5,6 @@
 package nha_sach;
 
 import java.util.Scanner;
-
-/**
- *
- * @author phant
- */
 public class Login_Logout {
     String account;
     String password;

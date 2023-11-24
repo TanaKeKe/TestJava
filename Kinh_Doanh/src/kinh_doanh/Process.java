@@ -17,7 +17,7 @@ public class Process {
         Scanner sc = new Scanner(System.in);
         while (true) {
             Login_Logout person = new Login_Logout();
-            if (person.account.equals("admin")) { // nếu đăng nhập dưới tư cách là admin
+            if (person.getAccount().equals("admin")) { // nếu đăng nhập dưới tư cách là admin
                 while (true) {
                     System.out.println("----------MENU----------");
                     System.out.println("1. Add                  ");
@@ -88,22 +88,24 @@ public class Process {
                         String keyword = sc.nextLine();
                         System.out.print("Do you want to print a list or a table? (list,table): ");
                         String form = sc.nextLine();
-                        if (form.equals("list")) {
-                            System.out.println("List of searchable products:");
-                            System.out.println("------");
-                            listnotebook.PrintListNoteBook(keyword);
-                            listpencil.PrintListPencil(keyword);
-                            listpen.PrintListPen(keyword);
-                            listbook.PrintListBook(keyword);
-                        } else if (form.equals("table")) {
-                            System.out.printf("|%-15s|%-12s|%-30s|- Color: %-30s\n", "Name", "Price", "Trademark", "More Information");
-                            System.out.println("|---------------|------------|------------------------------|------------------------------");
-                            listnotebook.PrintTableNoteBook(keyword);
-                            listpencil.PrintTablePencil(keyword);
-                            listpen.PrintTablePen(keyword);
-                            listbook.PrintTableBook(keyword);
-                        } else {
-                            System.out.println("Invalid");
+                        switch (form) {
+                            case "list" -> {
+                                System.out.println("List of searchable products:");
+                                System.out.println("------");
+                                listnotebook.PrintListNoteBook(keyword);
+                                listpencil.PrintListPencil(keyword);
+                                listpen.PrintListPen(keyword);
+                                listbook.PrintListBook(keyword);
+                            }
+                            case "table" -> {
+                                System.out.printf("|%-15s|%-12s|%-30s|%-30s\n", "Name", "Price", "Trademark", "More Information");
+                                System.out.println("|---------------|------------|------------------------------|------------------------------");
+                                listnotebook.PrintTableNoteBook(keyword);
+                                listpencil.PrintTablePencil(keyword);
+                                listpen.PrintTablePen(keyword);
+                                listbook.PrintTableBook(keyword);
+                            }
+                            default -> System.out.println("Invalid");
                         }
                     } else {
                         System.out.println("Invalid");
@@ -121,22 +123,24 @@ public class Process {
                     String keyword = sc.nextLine();
                     System.out.print("Do you want to print a list or a table? (list,table): ");
                     String form = sc.nextLine();
-                    if (form.equals("list")) {
-                        System.out.println("List of searchable products:");
-                        System.out.println("------");
-                        listnotebook.PrintListNoteBook(keyword);
-                        listpencil.PrintListPencil(keyword);
-                        listpen.PrintListPen(keyword);
-                        listbook.PrintListBook(keyword);
-                    } else if (form.equals("table")) {
-                        System.out.printf("|%-15s|%-12s|%-30s|- Color: %-30s\n", "Name", "Price", "Trademark", "More Information");
-                        System.out.println("|---------------|------------|------------------------------|------------------------------");
-                        listnotebook.PrintTableNoteBook(keyword);
-                        listpencil.PrintTablePencil(keyword);
-                        listpen.PrintTablePen(keyword);
-                        listbook.PrintTableBook(keyword);
-                    } else {
-                        System.out.println("Invalid");
+                    switch (form) {
+                        case "list" -> {
+                            System.out.println("List of searchable products:");
+                            System.out.println("------");
+                            listnotebook.PrintListNoteBook(keyword);
+                            listpencil.PrintListPencil(keyword);
+                            listpen.PrintListPen(keyword);
+                            listbook.PrintListBook(keyword);
+                        }
+                        case "table" -> {
+                            System.out.printf("|%-15s|%-12s|%-30s|%-30s\n", "Name", "Price", "Trademark", "More Information");
+                            System.out.println("|---------------|------------|------------------------------|------------------------------");
+                            listnotebook.PrintTableNoteBook(keyword);
+                            listpencil.PrintTablePencil(keyword);
+                            listpen.PrintTablePen(keyword);
+                            listbook.PrintTableBook(keyword);
+                        }
+                        default -> System.out.println("Invalid");
                     }
                     System.out.print("Do you want to log out? (y/n): ");
                     String chose = sc.nextLine();

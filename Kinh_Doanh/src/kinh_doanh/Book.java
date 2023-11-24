@@ -78,4 +78,21 @@ public class Book {
     public void setLanguage(String Language) {
         this.Language = Language;
     }
+
+    public void printBook() {
+        System.out.printf("Name: %s\nPrice: %s\nTrademark: %s\nCategory: %s\nAuthor: %s\nPublisher: %s\nYear: %s\nLanguage: %s\n------",
+        this.Name,this.Price,this.Trademark,this.Category,this.Author,this.Publisher,this.Year,this.Language);
+    }
+
+    public Book(String Name, String Price, String Trademark, String Category, String Author, String Publisher, String Year, String Language) {
+        this.Name = Name;
+        this.Price = Price;
+        this.Trademark = Trademark;
+        this.Category = Category;
+        this.Author = Author;
+        this.Publisher = Publisher;
+        this.Year = Year;
+        this.Language = Language;
+    }
+
 }

@@ -6,20 +6,36 @@ package kinh_doanh;
 
 import java.util.Scanner;
 public class Login_Logout {
-    String account;
-    String password;
+    private String account;
+    private String password;
+
+    public final String getAccount() {
+        return account;
+    }
+
+    public final void setAccount(String account) {
+        this.account = account;
+    }
+
+    public final String getPassword() {
+        return password;
+    }
+
+    public final void setPassword(String password) {
+        this.password = password;
+    }
     
     public Login_Logout() { // đăng nhập
         Scanner sc = new Scanner(System.in);
         while (true) {
             int check = 0;
             System.out.print("Account: ");
-            this.account = sc.nextLine();
-            if (this.account.equals("admin")) { // nếu là chủ cửa hàng
+            setAccount(sc.nextLine());
+            if (getAccount().equals("admin")) { // nếu là chủ cửa hàng
                 while (true) {
                     System.out.print("Password: ");
-                    this.password = sc.nextLine();
-                    if (this.password.equals("admin")) { // nếu nhập đúng mật khẩu
+                    setPassword(sc.nextLine());
+                    if (getPassword().equals("admin")) { // nếu nhập đúng mật khẩu
                         check = 1;
                         System.out.println("Logged In Successfully!");
                         System.out.println("Hello Admin!");
@@ -31,7 +47,7 @@ public class Login_Logout {
             if (check == 1) {
                 break;
             }
-            if (this.account.equals("khach")) { // nếu là khách
+            if (getAccount().equals("khach")) { // nếu là khách
                 System.out.println("Logged in successfully!");
                 System.out.println("Hello!");
                 break;
@@ -41,7 +57,7 @@ public class Login_Logout {
     }
     
     public void Logout() {
-        if (this.account.equals("admin")) {
+        if (getAccount().equals("admin")) {
             System.out.println("Bye Admin!");
         } else {
             System.out.println("Thanks for visitting!");

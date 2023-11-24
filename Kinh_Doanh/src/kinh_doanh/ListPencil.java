@@ -9,21 +9,11 @@ import java.util.Scanner;
 
 public class ListPencil {
     ArrayList<Pencil> pencil = new ArrayList<>();
-
-    public void PrintPencil(Pencil x) {
-        System.out.println("Name: " + x.getName());
-        System.out.println("Price: " + x.getPrice());
-        System.out.println("Trademark: " + x.getTrademark());
-        System.out.println("Color: " + x.getColor());
-        System.out.println("Material: " + x.getMaterial());
-        System.out.println("Stiffness: " + x.getStiffness());
-        System.out.println("------");
-    }
     
     public void PrintListPencil(String keyword) {
         for (Pencil x : pencil) {
             if (x.getTrademark().contains(keyword) || x.getName().contains(keyword) || x.getPrice().contains(keyword) || x.getColor().contains(keyword) || x.getMaterial().contains(keyword) || x.getStiffness().contains(keyword)) {
-                PrintPencil(x);
+                x.printPencil();
             }
         }
     }
@@ -43,34 +33,15 @@ public class ListPencil {
     public void AddPencil() {
         System.out.println("Please enter the following information!");
         Scanner sc = new Scanner(System.in);
-        Pencil x = new Pencil();
-        String tmpString;
-
-        System.out.print("Name: ");
-        tmpString = sc.nextLine();
-        x.setName(tmpString);
-
-        System.out.print("Price: ");
-        tmpString = sc.nextLine();
-        x.setPrice(tmpString);
-
-        System.out.print("Trademark: ");
-        tmpString = sc.nextLine();
-        x.setTrademark(tmpString);
-
-        System.out.print("Color: ");
-        tmpString = sc.nextLine();
-        x.setColor(tmpString);
-
-        System.out.print("Material: ");
-        tmpString = sc.nextLine();
-        x.setMaterial(tmpString);
-
-        System.out.print("Stiffness: ");
-        tmpString = sc.nextLine();
-        x.setStiffness(tmpString);
-
-        pencil.add(x);
+        String Name, Price, Trademark, Color, Material, Stiffness;
+        System.out.print("Name: "); Name=sc.nextLine();
+        System.out.print("Price: "); Price=sc.nextLine();
+        System.out.print("Trademark: "); Trademark=sc.nextLine();
+        System.out.print("Color: "); Color=sc.nextLine();
+        System.out.print("Material: "); Material=sc.nextLine();
+        System.out.print("Stiffness: "); Stiffness=sc.nextLine();
+        Pencil newPencil = new Pencil(Name, Price, Trademark, Color, Material, Stiffness);
+        pencil.add(newPencil);
         System.out.println("Added pencils successfully!");
     }
 
@@ -83,7 +54,7 @@ public class ListPencil {
         for (Pencil x : pencil) {
             if (x.getName().equals(namepencil)) {
                 // in tư liệu thêm code dạng list vào đây
-                PrintPencil(x);
+                x.printPencil();
                 System.out.print("Is this the pencil you want to edit? (y/n): ");
                 String check = sc.nextLine();
                 if ("y".equals(check)) {
@@ -127,7 +98,7 @@ public class ListPencil {
         for (Pencil x : pencil) {
             if (x.getName().equals(namepencil)) {
                 // in tư liệu thêm code dạng list vào đây
-                PrintPencil(x);
+                x.printPencil();
                 System.out.print("Is this the pencil you want to delete? (y/n): ");
                 String check = sc.nextLine();
                 if ("y".equals(check)) {

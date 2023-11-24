@@ -76,6 +76,24 @@ public class NoteBook {
     public void setSize(String Size) {
         this.Size = Size;
     }
+
+    public void printNoteBook() {
+        System.out.printf("Name: %s\nPrice: %s\nTrademark: %s\nNumberOfPages: %s\nType: %s\nColor: %s\nMaterial: %s\nSize: %s\n------",
+                this.Name, this.Price, this.Trademark, this.NumberOfPages, this.Type, this.Color, this.Material, this.Size); 
+                
+    }
+
+    public NoteBook(String Name, String Price, String Trademark, String NumberOfPages, String Type, String Color, String Material, String Size) {
+        this.Name = Name;
+        this.Price = Price;
+        this.Trademark = Trademark;
+        this.NumberOfPages = NumberOfPages;
+        this.Type = Type;
+        this.Color = Color;
+        this.Material = Material;
+        this.Size = Size;
+    }
+    
     
     
 }

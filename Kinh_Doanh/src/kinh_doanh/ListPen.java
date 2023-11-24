@@ -9,22 +9,11 @@ import java.util.Scanner;
 
 public class ListPen {
     ArrayList<Pen> pen = new ArrayList<>();
-
-    public void PrintPen(Pen x) {
-        System.out.println("Name: " + x.getName());
-        System.out.println("Price: " + x.getPrice());
-        System.out.println("Trademark: " + x.getTrademark());
-        System.out.println("Color: " + x.getColor());
-        System.out.println("Material: " + x.getMaterial());
-        System.out.println("Type of Ink: " + x.getTypeOfInk());
-        System.out.println("Smoothly: " + x.getSmoothly());
-        System.out.println("------");
-    }
     
     public void PrintListPen(String keyword) {
         for (Pen x : pen) {
             if (x.getTrademark().contains(keyword) || x.getName().contains(keyword) || x.getPrice().contains(keyword) || x.getColor().contains(keyword) || x.getMaterial().contains(keyword) || x.getTypeOfInk().contains(keyword) || x.getSmoothly().contains(keyword)) {
-                PrintPen(x);
+                x.printPen();
             }
         }
     }
@@ -45,38 +34,16 @@ public class ListPen {
     public void AddPen() {
         System.out.println("Please enter the following information!");
         Scanner sc = new Scanner(System.in);
-        Pen x = new Pen();
-        String tmpString;
-
-        System.out.print("Name: ");
-        tmpString = sc.nextLine();
-        x.setName(tmpString);
-
-        System.out.print("Price: ");
-        tmpString = sc.nextLine();
-        x.setPrice(tmpString);
-
-        System.out.print("Trademark: ");
-        tmpString = sc.nextLine();
-        x.setTrademark(tmpString);
-
-        System.out.print("Color: ");
-        tmpString = sc.nextLine();
-        x.setColor(tmpString);
-
-        System.out.print("Material: ");
-        tmpString = sc.nextLine();
-        x.setMaterial(tmpString);
-
-        System.out.print("Type Of Ink: ");
-        tmpString = sc.nextLine();
-        x.setTypeOfInk(tmpString);
-
-        System.out.print("Smoothly: ");
-        tmpString = sc.nextLine();
-        x.setSmoothly(tmpString);
-        
-        pen.add(x);
+        String Name, Price, Trademark, Color, Material, TypeOfInk, Smoothly;
+        System.out.print("Name: "); Name=sc.nextLine();
+        System.out.print("Price: "); Price=sc.nextLine();
+        System.out.print("Trademark: "); Trademark=sc.nextLine();
+        System.out.print("Color: "); Color=sc.nextLine();
+        System.out.print("Material: "); Material=sc.nextLine();
+        System.out.print("Type Of Ink: "); TypeOfInk=sc.nextLine();
+        System.out.println("Smoothly: "); Smoothly=sc.nextLine();
+        Pen newPen = new Pen(Name, Price, Trademark, Color, Material, TypeOfInk, Smoothly);
+        pen.add(newPen);
         System.out.println("Added pens successfully!");
     }
 
@@ -89,7 +56,7 @@ public class ListPen {
         for (Pen x : pen) {
             if (x.getName().equals(namepen)) {
                 // in tư liệu thêm code dạng list vào đây
-                PrintPen(x);
+                x.printPen();
                 System.out.print("Is this the pen you want to edit? (y/n): ");
                 String check = sc.nextLine();
                 if ("y".equals(check)) {
@@ -136,7 +103,7 @@ public class ListPen {
         for (Pen x : pen) {
             if (x.getName().equals(namepen)) {
                 // in tư liệu thêm code dạng list vào đây
-                PrintPen(x);
+                x.printPen();
                 System.out.print("Is this the pen you want to delete? (y/n): ");
                 String check = sc.nextLine();
                 if ("y".equals(check)) {

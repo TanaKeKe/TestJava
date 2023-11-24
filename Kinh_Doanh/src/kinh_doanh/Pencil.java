@@ -58,5 +58,19 @@ public class Pencil {
     public void setStiffness(String Stiffness) {
         this.Stiffness = Stiffness;
     }
+
+    public void printPencil() {
+        System.out.printf("Name: %s\nPrice: %s\nTrademark: %s\nColor: %s\nMaterial: %s\nStiffness: %s\n------",
+                this.Name, this.Price, this.Trademark, this.Color, this.Material, this.Stiffness);
+    }
+
+    public Pencil(String Name, String Price, String Trademark, String Color, String Material, String Stiffness) {
+        this.Name = Name;
+        this.Price = Price;
+        this.Trademark = Trademark;
+        this.Color = Color;
+        this.Material = Material;
+        this.Stiffness = Stiffness;
+    }
     
 }

@@ -13,23 +13,12 @@ public class ListBook {
     ArrayList<Book> book = new ArrayList<>();
 
     // in 1 cuốn sách theo dạng list
-    public void PrintBook(Book x) {
-        System.out.println("Name: " + x.getName());
-        System.out.println("Price: " + x.getPrice());
-        System.out.println("Trademark: " + x.getTrademark());
-        System.out.println("Category: " + x.getCategory());
-        System.out.println("Author " + x.getAuthor());
-        System.out.println("Publisher: " + x.getPublisher());
-        System.out.println("Year: " + x.getYear());
-        System.out.println("Language: " + x.getLanguage());
-        System.out.println("------");
-    }
 
     // in nhiều cuốn sách có xâu kí tự đầu vào
     public void PrintListBook(String keyword) {
         for (Book x : book) {
             if (x.getTrademark().contains(keyword) || x.getName().contains(keyword) || x.getPrice().contains(keyword) || x.getCategory().contains(keyword) || x.getAuthor().contains(keyword) || x.getPublisher().contains(keyword) || x.getYear().contains(keyword) || x.getLanguage().contains(keyword)) {
-                PrintBook(x);
+                x.printBook();
             }
         }
     }
@@ -52,42 +41,17 @@ public class ListBook {
     public void AddBook() {
         System.out.println("Please enter the following information!");
         Scanner sc = new Scanner(System.in);
-        Book x = new Book();
-        String tmpString;
-
-        System.out.print("Name: ");
-        tmpString = sc.nextLine();
-        x.setName(tmpString);
-
-        System.out.print("Price: ");
-        tmpString = sc.nextLine();
-        x.setPrice(tmpString);
-
-        System.out.print("Trademark: ");
-        tmpString = sc.nextLine();
-        x.setTrademark(tmpString);
-        
-        System.out.print("Category: ");
-        tmpString = sc.nextLine();
-        x.setCategory(tmpString);
-
-        System.out.print("Author: ");
-        tmpString = sc.nextLine();
-        x.setAuthor(tmpString);
-
-        System.out.print("Publisher: ");
-        tmpString = sc.nextLine();
-        x.setPublisher(tmpString);
-
-        System.out.print("Year: ");
-        tmpString = sc.nextLine();
-        x.setYear(tmpString);
-
-        System.out.print("Language: ");
-        tmpString = sc.nextLine();
-        x.setLanguage(tmpString);
-
-        book.add(x);
+        String Name, Price, Trademark, Category, Author, Publisher, Year, Language;
+        System.out.print("Name: "); Name=sc.nextLine();
+        System.out.print("Price: "); Price=sc.nextLine();
+        System.out.print("Trademark: "); Trademark=sc.nextLine();
+        System.out.print("Category: "); Category=sc.nextLine();
+        System.out.print("Author: "); Author=sc.nextLine();
+        System.out.print("Publisher: "); Publisher=sc.nextLine();
+        System.out.print("Year: "); Year=sc.nextLine();
+        System.out.print("Language: "); Language=sc.nextLine();
+        Book newBook = new Book(Name, Price, Trademark, Category, Author, Publisher, Year, Language);
+        book.add(newBook);
         System.out.println("Added books successfully!");
     }
 
@@ -100,7 +64,7 @@ public class ListBook {
         for (Book x : book) {
             if (x.getName().equals(namebook)) {
                 // in tư liệu thêm code dạng list vào đây
-                PrintBook(x);
+                x.printBook();
                 System.out.print("Is this the book you want to edit? (y/n): ");
                 String check = sc.nextLine();
                 if ("y".equals(check)) {
@@ -150,7 +114,7 @@ public class ListBook {
         for (Book x : book) {
             if (x.getName().equals(namebook)) {
                 // in tư liệu thêm code dạng list vào đây
-                PrintBook(x);
+                x.printBook();
                 System.out.print("Is this the book you want to delete? (y/n): ");
                 String check = sc.nextLine();
                 if ("y".equals(check)) {

@@ -10,24 +10,11 @@ import java.util.Scanner;
 public class ListNoteBook {
     ArrayList<NoteBook> notebook = new ArrayList<>();
 
-    // in 1 cuốn sách theo dạng list
-    public void PrintNoteBook(NoteBook x) {
-        System.out.println("Name: " + x.getName());
-        System.out.println("Price: " + x.getPrice());
-        System.out.println("Trademark: " + x.getTrademark());
-        System.out.println("Number Of Pages: " + x.getNumberOfPages());
-        System.out.println("Type " + x.getType());
-        System.out.println("Color: " + x.getColor());
-        System.out.println("Material: " + x.getMaterial());
-        System.out.println("Size: " + x.getSize());
-        System.out.println("------");
-    }
-
     // in nhiều cuốn sách có xâu kí tự đầu vào
     public void PrintListNoteBook(String keyword) {
         for (NoteBook x : notebook) {
             if (x.getTrademark().contains(keyword) || x.getName().contains(keyword) || x.getPrice().contains(keyword) || x.getNumberOfPages().contains(keyword) || x.getType().contains(keyword) || x.getColor().contains(keyword) || x.getMaterial().contains(keyword) || x.getSize().contains(keyword)) {
-                PrintNoteBook(x);
+                x.printNoteBook();
             }
         }
     }
@@ -50,42 +37,17 @@ public class ListNoteBook {
     public void AddNoteBook() {
         System.out.println("Please enter the following information!");
         Scanner sc = new Scanner(System.in);
-        NoteBook x = new NoteBook();
-        String tmpString;
-
-        System.out.print("Name: ");
-        tmpString = sc.nextLine();
-        x.setName(tmpString);
-
-        System.out.print("Price: ");
-        tmpString = sc.nextLine();
-        x.setPrice(tmpString);
-
-        System.out.print("Trademark: ");
-        tmpString = sc.nextLine();
-        x.setTrademark(tmpString);
-        
-        System.out.print("Number Of Pages: ");
-        tmpString = sc.nextLine();
-        x.setNumberOfPages(tmpString);
-
-        System.out.print("Type: ");
-        tmpString = sc.nextLine();
-        x.setType(tmpString);
-
-        System.out.print("Color: ");
-        tmpString = sc.nextLine();
-        x.setColor(tmpString);
-
-        System.out.print("Material: ");
-        tmpString = sc.nextLine();
-        x.setMaterial(tmpString);
-
-        System.out.print("Size: ");
-        tmpString = sc.nextLine();
-        x.setSize(tmpString);
-
-        notebook.add(x);
+        String Name, Price, Trademark, NumberOfPages, Type, Color, Material, Size;
+        System.out.print("Name: "); Name=sc.nextLine();
+        System.out.print("Price: "); Price=sc.nextLine();
+        System.out.print("Trademark: "); Trademark=sc.nextLine();
+        System.out.print("Number Of Pages: "); NumberOfPages=sc.nextLine();
+        System.out.print("Type: "); Type=sc.nextLine();
+        System.out.print("Color: "); Color=sc.nextLine();
+        System.out.print("Material: "); Material=sc.nextLine();
+        System.out.print("Size: "); Size=sc.nextLine();
+        NoteBook newNoteBook = new NoteBook(Name, Price, Trademark, NumberOfPages, Type, Color, Material, Size);
+        notebook.add(newNoteBook);
         System.out.println("Added notebooks successfully!");
     }
 
@@ -98,7 +60,7 @@ public class ListNoteBook {
         for (NoteBook x : notebook) {
             if (x.getName().equals(namenotebook)) {
                 // in tư liệu thêm code dạng list vào đây
-                PrintNoteBook(x);
+                x.printNoteBook();
                 System.out.print("Is this the notebook you want to edit? (y/n): ");
                 String check = sc.nextLine();
                 if ("y".equals(check)) {
@@ -148,7 +110,7 @@ public class ListNoteBook {
         for (NoteBook x : notebook) {
             if (x.getName().equals(namenotebook)) {
                 // in tư liệu thêm code dạng list vào đây
-                PrintNoteBook(x);
+                x.printNoteBook();
                 System.out.print("Is this the notebook you want to delete? (y/n): ");
                 String check = sc.nextLine();
                 if ("y".equals(check)) {

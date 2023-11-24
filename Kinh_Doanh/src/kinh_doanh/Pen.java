@@ -67,6 +67,21 @@ public class Pen {
     public void setSmoothly(String Smoothly) {
         this.Smoothly = Smoothly;
     }
+
+    public void printPen() {
+        System.out.printf("Name: %s\nPrice: %s\nTrademark: %s\nColor: %s\nMaterial: %s\nType Of Ink: %s\nSmoothly: %s\n------",
+                this.Name, this.Price, this.Trademark, this.Color, this.Material, this.TypeOfInk, this.Smoothly);
+    }
+
+    public Pen(String Name, String Price, String Trademark, String Color, String Material, String TypeOfInk, String Smoothly) {
+        this.Name = Name;
+        this.Price = Price;
+        this.Trademark = Trademark;
+        this.Color = Color;
+        this.Material = Material;
+        this.TypeOfInk = TypeOfInk;
+        this.Smoothly = Smoothly;
+    }
     
     
 }
